@@ -2,6 +2,7 @@ import pytest
 from selenium import webdriver
 from calc_page import Calc
 
+
 @pytest.fixture
 def driver():
     driver = webdriver.Chrome()
@@ -10,6 +11,7 @@ def driver():
     yield driver
 
     driver.quit()
+
 
 def test_calc(driver):
     calc = Calc(driver)

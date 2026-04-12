@@ -2,6 +2,7 @@ import pytest
 from selenium import webdriver
 from shop_page import Shop
 
+
 @pytest.fixture
 def driver():
     driver = webdriver.Firefox()
@@ -13,15 +14,14 @@ def driver():
 
 
 def test_shop(driver):
-#авторизация
+# авторизация
     shop = Shop(driver)
     shop.auth()
-#добавление товаров
+# добавление товаров
     shop.add_cart()
-#подтверждение
+# подтверждение
     shop.checkout()
-#заполнить форму
+# заполнить форму
     shop.fill_form()
-#проверка 
-    assert shop.total().strip() == "Total: $58.29"    
-
+# проверка
+    assert shop.total().strip() == "Total: $58.29"
