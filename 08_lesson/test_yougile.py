@@ -2,6 +2,8 @@ import requests
 
 base_url = "https://ru.yougile.com/api-v2"
 
+token = "вставьте своё значение"
+
 
 def test_create_project():
     my_header = {"Authorization": f"Bearer {token}",
@@ -78,12 +80,8 @@ def test_get_id():
 
 def test_negative_get_id():
     # Создание нового проекта
-    my_header = {"Authorization": f"Bearer {token}",
-                 "Content-Type": "application/json"}
+    my_header = {"Content-Type": "application/json"}
     body = {"title": "Проект2"}
     response = requests.post(url=f"{base_url}/projects", headers=my_header, json=body)
-    assert response.status_code == 201
-    # id = response_body["id"]
-    # Получение проекта по id
-    response = requests.get(url=f"{base_url}/projects/{id}", headers=my_header)
-    assert response.status_code == 404
+    assert response.status_code == 401
+   
